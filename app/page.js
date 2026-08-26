@@ -1,11 +1,9 @@
 import Link from "next/link";
-import CheckoutButton from "../components/CheckoutButton"; // हमने अपना नया बटन यहाँ इम्पोर्ट किया है
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 font-sans">
-      {/* Hero Section */}
-      <section className="bg-white py-20 text-center px-4 shadow-sm">
+      <section className="bg-white py-20 text-center px-4 shadow-sm border-b">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
           Welcome to <span className="text-blue-600">Digihub</span>
         </h1>
@@ -17,31 +15,32 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Own Premium Products */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Digihub Premium Tools</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow border border-gray-100">
-            <h3 className="text-2xl font-bold mb-2">Next.js Starter Pro</h3>
-            <p className="text-gray-600 mb-4">Complete template with Authentication, Dashboard, and Payments ready.</p>
-            <div className="flex justify-between items-center mt-6">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Product 1 */}
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all">
+            <h3 className="text-2xl font-bold mb-2 text-gray-900">Next.js Starter Pro</h3>
+            <p className="text-gray-600 mb-6 h-12">Complete template with Authentication, Dashboard, and Payments ready.</p>
+            <div className="flex justify-between items-center border-t pt-4">
               <span className="text-3xl font-extrabold text-gray-900">₹1999</span>
-              {/* यहाँ हमने अपना असली CheckoutButton लगा दिया है */}
-              <CheckoutButton amount={1999} productName="Next.js Starter Pro" />
+              {/* यहाँ हमने डायनामिक पेज का लिंक दे दिया है */}
+              <Link href="/product/nextjs-starter" className="bg-gray-900 hover:bg-gray-800 text-white px-5 py-2 rounded-lg font-bold transition-all">
+                View Details &rarr;
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Affiliate Tools */}
-      <section className="bg-gray-900 text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Recommended Affiliate Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-bold text-blue-400">Vercel Pro</h3>
-              <p className="text-gray-400 my-3">The best cloud hosting for Next.js applications.</p>
-              <a href="#" className="text-sm font-semibold underline hover:text-white">Get Started &rarr;</a>
+          {/* Product 2 */}
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all">
+            <h3 className="text-2xl font-bold mb-2 text-gray-900">Sales Funnel</h3>
+            <p className="text-gray-600 mb-6 h-12">A plug-and-play sales funnel template to maximize your digital product sales.</p>
+            <div className="flex justify-between items-center border-t pt-4">
+              <span className="text-3xl font-extrabold text-gray-900">₹999</span>
+              <Link href="/product/sales-funnel" className="bg-gray-900 hover:bg-gray-800 text-white px-5 py-2 rounded-lg font-bold transition-all">
+                View Details &rarr;
+              </Link>
             </div>
           </div>
         </div>
@@ -49,5 +48,3 @@ export default function Home() {
     </main>
   );
 }
-
-
