@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CheckoutButton from "../components/CheckoutButton"; // हमने अपना नया बटन यहाँ इम्पोर्ट किया है
 
 export default function Home() {
   return (
@@ -25,9 +26,8 @@ export default function Home() {
             <p className="text-gray-600 mb-4">Complete template with Authentication, Dashboard, and Payments ready.</p>
             <div className="flex justify-between items-center mt-6">
               <span className="text-3xl font-extrabold text-gray-900">₹1999</span>
-              <button className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg font-bold">
-                Buy Now
-              </button>
+              {/* यहाँ हमने अपना असली CheckoutButton लगा दिया है */}
+              <CheckoutButton amount={1999} productName="Next.js Starter Pro" />
             </div>
           </div>
         </div>
