@@ -1,23 +1,17 @@
 import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
   providers: [
-    CredentialsProvider({
-      name: "Email & Password",
-      credentials: {
-        email: { label: "Email", type: "email", placeholder: "your@email.com" },
-        password: { label: "Password (use 'password')", type: "password" }
-      },
-      async authorize(credentials) {
-        if (credentials.email && credentials.password === "password") {
-          return { id: "1", name: "Digihub User", email: credentials.email };
-        }
-        return null;
-      }
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "PASTE_HERE",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "PASTE_HERE",
     })
   ],
-  secret: "my-super-secret-key",
+  secret: process.env.NEXTAUTH_SECRET || "my-super-secret-key",
+  pages: {
+    signIn: '/login', // यह NextAuth को बताएगा कि हमारा नया डिज़ाइन किया हुआ लॉगिन पेज इस्तेमाल करना है
+  }
 };
 
 const handler = NextAuth(authOptions);
